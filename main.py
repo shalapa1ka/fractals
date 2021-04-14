@@ -67,7 +67,8 @@ axiom = "F-F-F-F"
 # **********************
 
 l_sys = LSystem2D(t, axiom, pen_width, f_len, angle)
-# l_sys.add_rule(("F", "F+F--F+F"))
-l_sys.add_rule(("F", "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F"))
+# l_sys.add_rule(("F", "F+F--F+F")) # Koch snowflake
+# l_sys.add_rule(("F", "F+FF-FF-F-F+F+FF-F-F+F+FF+FF-F")) # other 1 fractal
+l_sys.add_rule(("F", "F+S-FF+F+FF+FS+FF-S+FF-F-FF-FS-FFF"), ("S", "SSSSSS"))  # some fractal
 l_sys.generate_path(2)
 l_sys.draw_turtle((-500, 0), 0)
