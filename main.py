@@ -8,8 +8,13 @@ class LSystem2D:
         self.width = width
         self.length = length
         self.angle = angle
+        self.rules = {}         # dictionary for storing the rules of forming curves
         self.t = t
         self.t.pensize(self.width)
+
+    def add_rule(self, *rules):
+        for key, value in rules:
+            self.rules[key] = value
 
     def draw_turtle(self, start_pos, start_angle):
         # **********************
@@ -48,3 +53,7 @@ pen_width = 2
 f_len = 50
 angle = 60
 # **********************
+
+l_sys = LSystem2D(t, "F+F--F+F", pen_width, f_len, angle)
+l_sys.add_rule(("F", "F+F--F+F"))
+l_sys.draw_turtle((0, 0), 0)
