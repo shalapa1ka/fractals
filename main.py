@@ -8,13 +8,20 @@ class LSystem2D:
         self.width = width
         self.length = length
         self.angle = angle
-        self.rules = {}         # dictionary for storing the rules of forming curves
+        self.rules = {}  # dictionary for storing the rules of forming curves
         self.t = t
         self.t.pensize(self.width)
 
     def add_rule(self, *rules):
         for key, value in rules:
             self.rules[key] = value
+
+    def generate_path(self, n_iter):
+        for i in range(n_iter):
+            for key, value in self.rules.items():
+                self.state = self.state.replace(key, value.lower())
+
+            self.state = self.state.upper()
 
     def draw_turtle(self, start_pos, start_angle):
         # **********************
